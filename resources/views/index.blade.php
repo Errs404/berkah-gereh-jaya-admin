@@ -2,22 +2,20 @@
 <html lang="en" data-bs-theme="light">
 <head>
     <!-- Meta Tags -->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Berkah Gereh Jaya — Sistem Administrasi modern untuk pengelolaan distributor, stok barang, retur, akomodasi, laporan, dan rekap operasional. Cepat, akurat, dan mudah digunakan.">
-<meta name="keywords" content="berkah gereh jaya, sistem administrasi, manajemen stok, retur, distribusi, akomodasi, laporan, dashboard">
-<meta name="author" content="Berkah Gereh Jaya App">
-
-<!-- Open Graph Meta Tags -->
-<meta property="og:title" content="Berkah Gereh Jaya — Sistem Administrasi & Manajemen">
-<meta property="og:description" content="Dashboard modern untuk mengelola distributor, barang, stok, retur, dan laporan bulanan dengan mudah.">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Berkah Gereh Jaya">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Modern Bootstrap 5 Admin Template - Clean, responsive dashboard">
+    <meta name="keywords" content="bootstrap, admin, dashboard, template, modern, responsive">
+    <meta name="author" content="Bootstrap Admin Template">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Modern Bootstrap Admin Template">
+    <meta property="og:description" content="Clean and modern admin dashboard template built with Bootstrap 5">
+    <meta property="og:type" content="website">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="{{ asset('assets/favicon.ico') }}">
-    <link rel="icon" type="image/png" href="{{asset('assets/logo.png') }}">
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon-CvUZKS4z.svg">
+    <link rel="icon" type="image/png" href="./assets/favicon-B_cwPWBd.png">
     
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,28 +25,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Title -->
-    <title>Berkah Gereh Jaya — Sistem Administrasi & Manajemen</title>
+    <title>Dashboard - Modern Bootstrap Admin</title>
     
     <!-- Theme Color -->
     <meta name="theme-color" content="#6366f1">
     
     <!-- PWA Manifest -->
-<link rel="manifest" href="{{ asset('assets/manifest-DTaoG9pG.json') }}">
-
-<!-- JS Vendor -->
-<script type="module" crossorigin src="{{ asset('assets/vendor-bootstrap-C9iorZI5.js') }}"></script>
-<script type="module" crossorigin src="{{ asset('assets/vendor-charts-DGwYAWel.js') }}"></script>
-<script type="module" crossorigin src="{{ asset('assets/vendor-ui-DjYv-mAO.js') }}"></script>
-
-<!-- Main JS -->
-<script type="module" crossorigin src="{{ asset('assets/main-BHbn44Op.js') }}"></script>
-
-<!-- CSS -->
-<link rel="stylesheet" crossorigin href="{{ asset('assets/main-QD_VOj1Y.css') }}">
-
-<!-- Bootstrap Icons Fonts -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css">
-
+    <link rel="manifest" href="./assets/manifest-DTaoG9pG.json">
+  <script type="module" crossorigin src="./assets/vendor-bootstrap-C9iorZI5.js"></script>
+  <script type="module" crossorigin src="./assets/vendor-charts-DGwYAWel.js"></script>
+  <script type="module" crossorigin src="./assets/vendor-ui-DjYv-mAO.js"></script>
+  <script type="module" crossorigin src="./assets/main-BHbn44Op.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/main-QD_VOj1Y.css">
 </head>
 
 <body data-page="dashboard" class="admin-layout">
@@ -69,13 +57,13 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
                 <div class="container-fluid">
                     <!-- Logo/Brand - Now first on the left -->
-                    <a class="navbar-brand d-flex align-items-center" href="{{ route('dashboard') }}">
-                        {{-- <img src="data:image/svg+xml,%3csvg%20width='32'%20height='32'%20viewBox='0%200%2032%2032'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3c!--%20Background%20circle%20for%20the%20M%20--%3e%3ccircle%20cx='16'%20cy='16'%20r='16'%20fill='url(%23logoGradient)'/%3e%3c!--%20Centered%20Letter%20M%20--%3e%3cpath%20d='M10%2024V8h2.5l2.5%206.5L17.5%208H20v16h-2V12.5L16.5%2020h-1L14%2012.5V24H10z'%20fill='white'%20font-weight='700'/%3e%3c!--%20Gradient%20definition%20--%3e%3cdefs%3e%3clinearGradient%20id='logoGradient'%20x1='0%25'%20y1='0%25'%20x2='100%25'%20y2='100%25'%3e%3cstop%20offset='0%25'%20style='stop-color:%236366f1;stop-opacity:1'%20/%3e%3cstop%20offset='100%25'%20style='stop-color:%238b5cf6;stop-opacity:1'%20/%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e" alt="Logo" height="32" class="d-inline-block align-text-top me-2"> --}}
-                        <h1 class="h4 mb-0 fw-bold text-primary">Berkah Gereh Jaya</h1>
+                    <a class="navbar-brand d-flex align-items-center" href="./index.html">
+                        <img src="data:image/svg+xml,%3csvg%20width='32'%20height='32'%20viewBox='0%200%2032%2032'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3c!--%20Background%20circle%20for%20the%20M%20--%3e%3ccircle%20cx='16'%20cy='16'%20r='16'%20fill='url(%23logoGradient)'/%3e%3c!--%20Centered%20Letter%20M%20--%3e%3cpath%20d='M10%2024V8h2.5l2.5%206.5L17.5%208H20v16h-2V12.5L16.5%2020h-1L14%2012.5V24H10z'%20fill='white'%20font-weight='700'/%3e%3c!--%20Gradient%20definition%20--%3e%3cdefs%3e%3clinearGradient%20id='logoGradient'%20x1='0%25'%20y1='0%25'%20x2='100%25'%20y2='100%25'%3e%3cstop%20offset='0%25'%20style='stop-color:%236366f1;stop-opacity:1'%20/%3e%3cstop%20offset='100%25'%20style='stop-color:%238b5cf6;stop-opacity:1'%20/%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e" alt="Logo" height="32" class="d-inline-block align-text-top me-2">
+                        <h1 class="h4 mb-0 fw-bold text-primary">Metis</h1>
                     </a>
 
                     <!-- Search Bar with Alpine.js -->
-                    {{-- <div class="search-container flex-grow-1 mx-4" x-data="searchComponent">
+                    <div class="search-container flex-grow-1 mx-4" x-data="searchComponent">
                         <div class="position-relative">
                             <input type="search" 
                                    class="form-control" 
@@ -103,7 +91,7 @@
                                 </template>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
 
                     <!-- Right Side Icons -->
                     <div class="navbar-nav flex-row">
@@ -131,7 +119,7 @@
                         </button>
 
                         <!-- Notifications -->
-                        {{-- <div class="dropdown me-2">
+                        <div class="dropdown me-2">
                             <button class="btn btn-outline-secondary position-relative" 
                                     type="button" 
                                     data-bs-toggle="dropdown" 
@@ -149,7 +137,7 @@
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item text-center" href="#">View all notifications</a></li>
                             </ul>
-                        </div> --}}
+                        </div>
 
                         <!-- User Menu -->
                         <div class="dropdown">
@@ -162,13 +150,13 @@
                                      width="24" 
                                      height="24" 
                                      class="rounded-circle me-2">
-                                <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
+                                <span class="d-none d-md-inline">John Doe</span>
                                 <i class="bi bi-chevron-down ms-1"></i>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                {{-- <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Profile</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Profile</a></li>
                                 <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Settings</a></li>
-                                <li><hr class="dropdown-divider"></li> --}}
+                                <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
                             </ul>
                         </div>
@@ -183,43 +171,37 @@
                 <nav class="sidebar-nav">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}" 
-                                href="{{ route('dashboard') }}">
+                            <a class="nav-link active" href="./index.html">
                                 <i class="bi bi-speedometer2"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('analytics') ? 'active' : '' }}" 
-                                href="{{ route('analytics') }}">
+                            <a class="nav-link" href="./analytics.html">
                                 <i class="bi bi-graph-up"></i>
                                 <span>Analytics</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('user') ? 'active' : '' }}" 
-                                href="{{ route('user') }}">
+                            <a class="nav-link" href="./users.html">
                                 <i class="bi bi-people"></i>
                                 <span>Users</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('products') ? 'active' : '' }}" 
-                                href="{{ route('products') }}">
+                            <a class="nav-link" href="./products.html">
                                 <i class="bi bi-box"></i>
                                 <span>Products</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('orders') ? 'active' : '' }}" 
-                                href="{{ route('orders') }}">
+                            <a class="nav-link" href="./orders.html">
                                 <i class="bi bi-bag-check"></i>
                                 <span>Orders</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('forms') ? 'active' : '' }}" 
-                                href="{{ route('forms') }}">
+                            <a class="nav-link" href="./forms.html">
                                 <i class="bi bi-ui-checks"></i>
                                 <span>Forms</span>
                                 <span class="badge bg-success rounded-pill ms-auto">New</span>
@@ -235,57 +217,49 @@
                             <div class="collapse" id="elementsSubmenu">
                                 <ul class="nav nav-submenu">
                                     <li class="nav-item">
-                                        <a class="nav-link {{ request()->routeIs('overview') ? 'active' : '' }}" 
-                                href="{{ route('overview') }}">
+                                        <a class="nav-link" href="./elements.html">
                                             <i class="bi bi-grid"></i>
                                             <span>Overview</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link {{ request()->routeIs('elements-buttons') ? 'active' : '' }}" 
-                                href="{{ route('elements-buttons') }}">
+                                        <a class="nav-link" href="./elements-buttons.html">
                                             <i class="bi bi-square"></i>
                                             <span>Buttons</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link {{ request()->routeIs('elements-alerts') ? 'active' : '' }}" 
-                                href="{{ route('elements-alerts') }}">
+                                        <a class="nav-link" href="./elements-alerts.html">
                                             <i class="bi bi-exclamation-triangle"></i>
                                             <span>Alerts</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link {{ request()->routeIs('elements-badges') ? 'active' : '' }}" 
-                                href="{{ route('elements-badges') }}">
+                                        <a class="nav-link" href="./elements-badges.html">
                                             <i class="bi bi-award"></i>
                                             <span>Badges</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link {{ request()->routeIs('elements-cards') ? 'active' : '' }}" 
-                                href="{{ route('elements-cards') }}">
+                                        <a class="nav-link" href="./elements-cards.html">
                                             <i class="bi bi-card-text"></i>
                                             <span>Cards</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link {{ request()->routeIs('elements-modals') ? 'active' : '' }}" 
-                                href="{{ route('elements-modals') }}">
+                                        <a class="nav-link" href="./elements-modals.html">
                                             <i class="bi bi-window"></i>
                                             <span>Modals</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link {{ request()->routeIs('elements-forms') ? 'active' : '' }}" 
-                                href="{{ route('elements-forms') }}">
+                                        <a class="nav-link" href="./elements-forms.html">
                                             <i class="bi bi-ui-checks"></i>
                                             <span>Forms</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link {{ request()->routeIs('elements-tables') ? 'active' : '' }}" 
-                                href="{{ route('elements-tables') }}">
+                                        <a class="nav-link" href="./elements-tables.html">
                                             <i class="bi bi-table"></i>
                                             <span>Tables</span>
                                         </a>
@@ -294,30 +268,26 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('reports') ? 'active' : '' }}" 
-                                href="{{ route('reports') }}">
+                            <a class="nav-link" href="./reports.html">
                                 <i class="bi bi-file-earmark-text"></i>
                                 <span>Reports</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('messages') ? 'active' : '' }}" 
-                                href="{{ route('messages') }}">
+                            <a class="nav-link" href="./messages.html">
                                 <i class="bi bi-chat-dots"></i>
                                 <span>Messages</span>
                                 <span class="badge bg-danger rounded-pill ms-auto">3</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('calendar') ? 'active' : '' }}" 
-                                href="{{ route('calendar') }}">
+                            <a class="nav-link" href="./calendar.html">
                                 <i class="bi bi-calendar-event"></i>
                                 <span>Calendar</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('files') ? 'active' : '' }}" 
-                                href="{{ route('files') }}">
+                            <a class="nav-link" href="./files.html">
                                 <i class="bi bi-folder2-open"></i>
                                 <span>Files</span>
                             </a>
@@ -326,22 +296,19 @@
                             <small class="text-muted px-3 text-uppercase fw-bold">Admin</small>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('settings') ? 'active' : '' }}" 
-                                href="{{ route('settings') }}">
+                            <a class="nav-link" href="./settings.html">
                                 <i class="bi bi-gear"></i>
                                 <span>Settings</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('security') ? 'active' : '' }}" 
-                                href="{{ route('security') }}">
+                            <a class="nav-link" href="./security.html">
                                 <i class="bi bi-shield-check"></i>
                                 <span>Security</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('help') ? 'active' : '' }}" 
-                                href="{{ route('help') }}">
+                            <a class="nav-link" href="./help.html">
                                 <i class="bi bi-question-circle"></i>
                                 <span>Help & Support</span>
                             </a>
@@ -366,9 +333,9 @@
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <div>
                         <h1 class="h3 mb-0">Dashboard</h1>
-                        <p class="text-muted mb-0">Dashboard modern untuk mengelola distributor, barang, stok, retur, dan laporan bulanan dengan mudah.</p>
+                        <p class="text-muted mb-0">Welcome back! Here's what's happening.</p>
                     </div>
-                    {{-- <div class="d-flex gap-2">
+                    <div class="d-flex gap-2">
                         <button type="button" class="btn btn-primary">
                             <i class="bi bi-plus-lg me-2"></i>
                             New Item
@@ -388,119 +355,102 @@
                                 title="Settings">
                             <i class="bi bi-gear icon-hover"></i>
                         </button>
-                    </div> --}}
+                    </div>
                 </div>
 
                 <!-- Stats Cards with Alpine.js -->
                 <div class="row g-4 mb-4">
                     <div class="col-xl-3 col-lg-6" x-data="statsCounter(12426, 5)">
-    <div class="card stats-card">
-        <div class="card-body">
-            <div class="d-flex align-items-center">
-                <div class="flex-shrink-0">
-                    <div class="stats-icon bg-primary bg-opacity-10 text-primary">
-                        <i class="bi bi-box-seam"></i>
+                        <div class="card stats-card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-shrink-0">
+                                        <div class="stats-icon bg-primary bg-opacity-10 text-primary">
+                                            <i class="bi bi-people"></i>
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h6 class="mb-0 text-muted">Total Users</h6>
+                                        <h3 class="mb-0" x-text="value.toLocaleString()" data-stat-value>12,426</h3>
+                                        <small class="text-success">
+                                            <i class="bi bi-arrow-up"></i> +12.5%
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="flex-grow-1 ms-3">
-                    <h6 class="mb-0 text-muted">Terjual (kg)</h6>
-
-                    <h3 class="mb-0">
-                        <span x-text="value.toLocaleString()"></span> kg
-                    </h3>
-
-                    <small class="text-success">
-                        <i class="bi bi-arrow-up"></i> +12.5%
-                    </small>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 
                     <div class="col-xl-3 col-lg-6">
-    <div class="card stats-card">
-        <div class="card-body">
-            <div class="d-flex align-items-center">
-                <div class="flex-shrink-0">
-                    <div class="stats-icon bg-success bg-opacity-10 text-success">
-                        <i class="bi bi-cash-stack"></i>
+                        <div class="card stats-card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-shrink-0">
+                                        <div class="stats-icon bg-success bg-opacity-10 text-success">
+                                            <i class="bi bi-graph-up"></i>
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h6 class="mb-0 text-muted">Revenue</h6>
+                                        <h3 class="mb-0">$54,320</h3>
+                                        <small class="text-success">
+                                            <i class="bi bi-arrow-up"></i> +8.2%
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="flex-grow-1 ms-3">
-                    <h6 class="mb-0 text-muted">Bruto</h6>
-
-                    <h3 class="mb-0">
-                        Rp 54.320
-                    </h3>
-
-                    <small class="text-success">
-                        <i class="bi bi-arrow-up"></i> +8.2%
-                    </small>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 
                     <div class="col-xl-3 col-lg-6">
-    <div class="card stats-card">
-        <div class="card-body">
-            <div class="d-flex align-items-center">
-                <div class="flex-shrink-0">
-                    <div class="stats-icon bg-warning bg-opacity-10 text-warning">
-                        <i class="bi bi-cash-coin"></i>
+                        <div class="card stats-card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-shrink-0">
+                                        <div class="stats-icon bg-warning bg-opacity-10 text-warning">
+                                            <i class="bi bi-bag-check"></i>
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h6 class="mb-0 text-muted">Orders</h6>
+                                        <h3 class="mb-0">1,852</h3>
+                                        <small class="text-danger">
+                                            <i class="bi bi-arrow-down"></i> -2.1%
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="flex-grow-1 ms-3">
-                    <h6 class="mb-0 text-muted">Keuntungan</h6>
-
-                    <h3 class="mb-0">
-                        Rp 1.852.000
-                    </h3>
-
-                    <small class="text-success">
-                        <i class="bi bi-arrow-up"></i> +2.1%
-                    </small>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 
                     <div class="col-xl-3 col-lg-6">
-    <div class="card stats-card">
-        <div class="card-body">
-            <div class="d-flex align-items-center">
-                <div class="flex-shrink-0">
-                    <div class="stats-icon bg-warning bg-opacity-10 text-warning">
-                        <i class="bi bi-receipt"></i>
+                        <div class="card stats-card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-shrink-0">
+                                        <div class="stats-icon bg-info bg-opacity-10 text-info">
+                                            <i class="bi bi-clock-history"></i>
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h6 class="mb-0 text-muted">Avg. Response</h6>
+                                        <h3 class="mb-0">2.3s</h3>
+                                        <small class="text-success">
+                                            <i class="bi bi-arrow-up"></i> +5.4%
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="flex-grow-1 ms-3">
-                    <h6 class="mb-0 text-muted">Bon</h6>
-
-                    <h3 class="mb-0">1.852</h3>
-
-                    <small class="text-danger">
-                        <i class="bi bi-arrow-down"></i> -2.1%
-                    </small>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 
                 <!-- Chart Section -->
                 <div class="row g-4 mb-4">
                     <div class="col-lg-8">
                         <div class="card">
                             <div class="card-header d-flex justify-content-between align-items-center">
-                                <h5 class="card-title mb-0">Keuntungan & Bruto Overview</h5>
+                                <h5 class="card-title mb-0">Revenue Overview</h5>
                                 <div class="btn-group btn-group-sm" role="group">
                                     <button type="button" class="btn btn-outline-primary active" data-chart-period="7d">7D</button>
                                     <button type="button" class="btn btn-outline-primary" data-chart-period="30d">30D</button>
@@ -548,15 +498,6 @@
                                             <small class="text-muted">1 hour ago</small>
                                         </div>
                                     </div>
-                                    <div class="activity-item">
-                                        <div class="activity-icon bg-warning bg-opacity-10 text-warning">
-                                            <i class="bi bi-exclamation-triangle"></i>
-                                        </div>
-                                        <div class="activity-content">
-                                            <p class="mb-1">Server maintenance scheduled</p>
-                                            <small class="text-muted">1 hour ago</small>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -564,7 +505,7 @@
                 </div>
 
                 <!-- Additional Charts Row -->
-                {{-- <div class="row g-4 mb-4">
+                <div class="row g-4 mb-4">
                     <div class="col-lg-6">
                         <div class="card">
                             <div class="card-header">
@@ -586,7 +527,7 @@
                             </div>
                         </div>
                     </div>
-                </div> --}}
+                </div>
 
                 <!-- New Widgets Row -->
                 <div class="row g-4 mb-4">
@@ -617,19 +558,8 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-title mb-0">Order Status Distribution</h5>
-                            </div>
-                            <div class="card-body">
-                                <canvas id="orderStatusChart" height="200"></canvas>
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- Storage Status -->
-                    {{-- <div class="col-lg-4">
+                    <div class="col-lg-4">
                         <div class="card">
                             <div class="card-header">
                                 <h5 class="card-title mb-0">Storage Status</h5>
@@ -639,10 +569,10 @@
                             </div>
                         </div>
                     </div>
-                </div> --}}
+                </div>
 
                 <!-- Sales by Location -->
-                {{-- <div class="row g-4">
+                <div class="row g-4">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
@@ -653,7 +583,7 @@
                             </div>
                         </div>
                     </div>
-                </div> --}}
+                </div>
 
             </div>
         </main>
@@ -663,10 +593,10 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6">
-                        <p class="mb-0 text-muted">© 2025 Berkah gereh Jaya</p>
+                        <p class="mb-0 text-muted">© 2025 Modern Bootstrap Admin Template</p>
                     </div>
                     <div class="col-md-6 text-md-end">
-                        <p class="mb-0 text-muted">.</p>
+                        <p class="mb-0 text-muted">Built with Bootstrap 5.3.7</p>
                     </div>
                 </div>
             </div>
