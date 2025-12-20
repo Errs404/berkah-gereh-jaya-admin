@@ -189,13 +189,13 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('analytics') ? 'active' : '' }}" 
                                 href="{{ route('analytics') }}">
                                 <i class="bi bi-graph-up"></i>
                                 <span>Analytics</span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('user') ? 'active' : '' }}" 
                                 href="{{ route('user') }}">
@@ -217,14 +217,14 @@
                                 <span>Orders</span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('forms') ? 'active' : '' }}" 
                                 href="{{ route('forms') }}">
                                 <i class="bi bi-ui-checks"></i>
                                 <span>Forms</span>
                                 <span class="badge bg-success rounded-pill ms-auto">New</span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#elementsSubmenu" aria-expanded="false">
                                 <i class="bi bi-puzzle"></i>
@@ -293,21 +293,21 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('reports') ? 'active' : '' }}" 
                                 href="{{ route('reports') }}">
                                 <i class="bi bi-file-earmark-text"></i>
                                 <span>Reports</span>
                             </a>
-                        </li>
-                        <li class="nav-item">
+                        </li> --}}
+                        {{-- <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('messages') ? 'active' : '' }}" 
                                 href="{{ route('messages') }}">
                                 <i class="bi bi-chat-dots"></i>
                                 <span>Messages</span>
                                 <span class="badge bg-danger rounded-pill ms-auto">3</span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('calendar') ? 'active' : '' }}" 
                                 href="{{ route('calendar') }}">
@@ -339,13 +339,13 @@
                                 <span>Security</span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('help') ? 'active' : '' }}" 
                                 href="{{ route('help') }}">
                                 <i class="bi bi-question-circle"></i>
                                 <span>Help & Support</span>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </nav>
             </div>
