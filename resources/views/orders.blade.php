@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Management - Modern Bootstrap Admin</title>
+    <title>Berkah Gereh Jaya — Sistem Administrasi & Manajemen</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Comprehensive order management with tracking, fulfillment, and analytics">
-    <meta name="keywords" content="bootstrap, admin, dashboard, orders, e-commerce, tracking">
-    
+    <meta name="description" content="Berkah Gereh Jaya — Sistem Administrasi modern untuk pengelolaan distributor, stok barang, retur, akomodasi, laporan, dan rekap operasional. Cepat, akurat, dan mudah digunakan.">
+    <meta name="keywords" content="berkah gereh jaya, sistem administrasi, manajemen stok, retur, distribusi, akomodasi, laporan, dashboard">
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="./assets/favicon-CvUZKS4z.svg">
     <link rel="icon" type="image/png" href="./assets/favicon-B_cwPWBd.png">
     
     <!-- PWA Manifest -->
-    <link rel="manifest" href="./assets/manifest-DTaoG9pG.json">
-    
+    <link rel="manifest" href="{{ asset('assets/manifest-DTaoG9pG.json') }}">
+
     <!-- Preload critical fonts -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap Icons Fonts -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css">
+
     
     <!-- ApexCharts CDN -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>  <script type="module" crossorigin src="./assets/vendor-bootstrap-C9iorZI5.js"></script>
@@ -39,13 +43,13 @@
                 <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
                     <div class="container-fluid">
                         <!-- Logo/Brand -->
-                        <a class="navbar-brand d-flex align-items-center" href="./index.html">
-                            <img src="data:image/svg+xml,%3csvg%20width='32'%20height='32'%20viewBox='0%200%2032%2032'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3c!--%20Background%20circle%20for%20the%20M%20--%3e%3ccircle%20cx='16'%20cy='16'%20r='16'%20fill='url(%23logoGradient)'/%3e%3c!--%20Centered%20Letter%20M%20--%3e%3cpath%20d='M10%2024V8h2.5l2.5%206.5L17.5%208H20v16h-2V12.5L16.5%2020h-1L14%2012.5V24H10z'%20fill='white'%20font-weight='700'/%3e%3c!--%20Gradient%20definition%20--%3e%3cdefs%3e%3clinearGradient%20id='logoGradient'%20x1='0%25'%20y1='0%25'%20x2='100%25'%20y2='100%25'%3e%3cstop%20offset='0%25'%20style='stop-color:%236366f1;stop-opacity:1'%20/%3e%3cstop%20offset='100%25'%20style='stop-color:%238b5cf6;stop-opacity:1'%20/%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e" alt="Logo" height="32" class="d-inline-block align-text-top me-2">
-                            <h1 class="h4 mb-0 fw-bold text-primary">Metis</h1>
+                        <a class="navbar-brand d-flex align-items-center" href="{{ route('dashboard') }}">
+                        {{-- <img src="data:image/svg+xml,%3csvg%20width='32'%20height='32'%20viewBox='0%200%2032%2032'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3c!--%20Background%20circle%20for%20the%20M%20--%3e%3ccircle%20cx='16'%20cy='16'%20r='16'%20fill='url(%23logoGradient)'/%3e%3c!--%20Centered%20Letter%20M%20--%3e%3cpath%20d='M10%2024V8h2.5l2.5%206.5L17.5%208H20v16h-2V12.5L16.5%2020h-1L14%2012.5V24H10z'%20fill='white'%20font-weight='700'/%3e%3c!--%20Gradient%20definition%20--%3e%3cdefs%3e%3clinearGradient%20id='logoGradient'%20x1='0%25'%20y1='0%25'%20x2='100%25'%20y2='100%25'%3e%3cstop%20offset='0%25'%20style='stop-color:%236366f1;stop-opacity:1'%20/%3e%3cstop%20offset='100%25'%20style='stop-color:%238b5cf6;stop-opacity:1'%20/%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e" alt="Logo" height="32" class="d-inline-block align-text-top me-2"> --}}
+                        <h1 class="h4 mb-0 fw-bold text-primary">Berkah Gereh Jaya</h1>
                         </a>
 
                         <!-- Search Bar with Alpine.js -->
-                        <div class="search-container flex-grow-1 mx-4" x-data="searchComponent">
+                        {{-- <div class="search-container flex-grow-1 mx-4" x-data="searchComponent">
                             <div class="position-relative">
                                 <input type="search" 
                                        class="form-control" 
@@ -73,7 +77,7 @@
                                     </template>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <!-- Right Side Icons -->
                         <div class="navbar-nav flex-row">
@@ -101,7 +105,7 @@
                             </button>
 
                             <!-- Notifications -->
-                            <div class="dropdown me-2">
+                            {{-- <div class="dropdown me-2">
                                 <button class="btn btn-outline-secondary position-relative" 
                                         type="button" 
                                         data-bs-toggle="dropdown" 
@@ -119,29 +123,29 @@
                                     <li><hr class="dropdown-divider"></li>
                                     <li><a class="dropdown-item text-center" href="#">View all notifications</a></li>
                                 </ul>
-                            </div>
+                            </div> --}}
 
                             <!-- User Menu -->
                             <div class="dropdown">
-                                <button class="btn btn-outline-secondary d-flex align-items-center" 
-                                        type="button" 
-                                        data-bs-toggle="dropdown" 
-                                        aria-expanded="false">
-                                    <img src="data:image/svg+xml,%3csvg%20width='32'%20height='32'%20viewBox='0%200%2032%2032'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3c!--%20Background%20circle%20--%3e%3ccircle%20cx='16'%20cy='16'%20r='16'%20fill='url(%23avatarGradient)'/%3e%3c!--%20Person%20silhouette%20--%3e%3cg%20fill='white'%20opacity='0.9'%3e%3c!--%20Head%20--%3e%3ccircle%20cx='16'%20cy='12'%20r='5'/%3e%3c!--%20Body%20--%3e%3cpath%20d='M16%2018c-5.5%200-10%202.5-10%207v1h20v-1c0-4.5-4.5-7-10-7z'/%3e%3c/g%3e%3c!--%20Subtle%20border%20--%3e%3ccircle%20cx='16'%20cy='16'%20r='15.5'%20fill='none'%20stroke='rgba(255,255,255,0.2)'%20stroke-width='1'/%3e%3c!--%20Gradient%20definition%20--%3e%3cdefs%3e%3clinearGradient%20id='avatarGradient'%20x1='0%25'%20y1='0%25'%20x2='100%25'%20y2='100%25'%3e%3cstop%20offset='0%25'%20style='stop-color:%236b7280;stop-opacity:1'%20/%3e%3cstop%20offset='100%25'%20style='stop-color:%234b5563;stop-opacity:1'%20/%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e" 
-                                         alt="User Avatar" 
-                                         width="24" 
-                                         height="24" 
-                                         class="rounded-circle me-2">
-                                    <span class="d-none d-md-inline">John Doe</span>
-                                    <i class="bi bi-chevron-down ms-1"></i>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Profile</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Settings</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
-                                </ul>
-                            </div>
+                            <button class="btn btn-outline-secondary d-flex align-items-center" 
+                                    type="button" 
+                                    data-bs-toggle="dropdown" 
+                                    aria-expanded="false">
+                                <img src="data:image/svg+xml,%3csvg%20width='32'%20height='32'%20viewBox='0%200%2032%2032'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3c!--%20Background%20circle%20--%3e%3ccircle%20cx='16'%20cy='16'%20r='16'%20fill='url(%23avatarGradient)'/%3e%3c!--%20Person%20silhouette%20--%3e%3cg%20fill='white'%20opacity='0.9'%3e%3c!--%20Head%20--%3e%3ccircle%20cx='16'%20cy='12'%20r='5'/%3e%3c!--%20Body%20--%3e%3cpath%20d='M16%2018c-5.5%200-10%202.5-10%207v1h20v-1c0-4.5-4.5-7-10-7z'/%3e%3c/g%3e%3c!--%20Subtle%20border%20--%3e%3ccircle%20cx='16'%20cy='16'%20r='15.5'%20fill='none'%20stroke='rgba(255,255,255,0.2)'%20stroke-width='1'/%3e%3c!--%20Gradient%20definition%20--%3e%3cdefs%3e%3clinearGradient%20id='avatarGradient'%20x1='0%25'%20y1='0%25'%20x2='100%25'%20y2='100%25'%3e%3cstop%20offset='0%25'%20style='stop-color:%236b7280;stop-opacity:1'%20/%3e%3cstop%20offset='100%25'%20style='stop-color:%234b5563;stop-opacity:1'%20/%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e" 
+                                     alt="User Avatar" 
+                                     width="24" 
+                                     height="24" 
+                                     class="rounded-circle me-2">
+                                <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
+                                <i class="bi bi-chevron-down ms-1"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                {{-- <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Profile</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Settings</a></li>
+                                <li><hr class="dropdown-divider"></li> --}}
+                                <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                            </ul>
+                        </div>
                         </div>
                     </div>
                 </nav>
@@ -149,157 +153,177 @@
 
             <!-- Sidebar -->
             <aside class="admin-sidebar" id="admin-sidebar">
-                <div class="sidebar-content">
-                    <nav class="sidebar-nav">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="./index.html">
-                                    <i class="bi bi-speedometer2"></i>
-                                    <span>Dashboard</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./analytics.html">
-                                    <i class="bi bi-graph-up"></i>
-                                    <span>Analytics</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./users.html">
-                                    <i class="bi bi-people"></i>
-                                    <span>Users</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./products.html">
-                                    <i class="bi bi-box"></i>
-                                    <span>Products</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="./orders.html">
-                                    <i class="bi bi-bag-check"></i>
-                                    <span>Orders</span>
-                                    <span class="badge bg-primary rounded-pill ms-auto">Active</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./forms.html">
-                                    <i class="bi bi-ui-checks"></i>
-                                    <span>Forms</span>
-                                    <span class="badge bg-success rounded-pill ms-auto">New</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#elementsSubmenu" aria-expanded="false">
-                                    <i class="bi bi-puzzle"></i>
-                                    <span>Elements</span>
-                                    <span class="badge bg-primary rounded-pill me-2">New</span>
-                                    <i class="bi bi-chevron-down ms-auto"></i>
-                                </a>
-                                <div class="collapse" id="elementsSubmenu">
-                                    <ul class="nav nav-submenu">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="./elements.html">
-                                                <i class="bi bi-grid"></i>
-                                                <span>Overview</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="./elements-buttons.html">
-                                                <i class="bi bi-square"></i>
-                                                <span>Buttons</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="./elements-alerts.html">
-                                                <i class="bi bi-exclamation-triangle"></i>
-                                                <span>Alerts</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="./elements-badges.html">
-                                                <i class="bi bi-award"></i>
-                                                <span>Badges</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="./elements-cards.html">
-                                                <i class="bi bi-card-text"></i>
-                                                <span>Cards</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="./elements-modals.html">
-                                                <i class="bi bi-window"></i>
-                                                <span>Modals</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="./elements-forms.html">
-                                                <i class="bi bi-ui-checks"></i>
-                                                <span>Forms</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="./elements-tables.html">
-                                                <i class="bi bi-table"></i>
-                                                <span>Tables</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./reports.html">
-                                    <i class="bi bi-file-earmark-text"></i>
-                                    <span>Reports</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./messages.html">
-                                    <i class="bi bi-chat-dots"></i>
-                                    <span>Messages</span>
-                                    <span class="badge bg-danger rounded-pill ms-auto">3</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./calendar.html">
-                                    <i class="bi bi-calendar-event"></i>
-                                    <span>Calendar</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./files.html">
-                                    <i class="bi bi-folder2-open"></i>
-                                    <span>Files</span>
-                                </a>
-                            </li>
-                            <li class="nav-item mt-3">
-                                <small class="text-muted px-3 text-uppercase fw-bold">Admin</small>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./settings.html">
-                                    <i class="bi bi-gear"></i>
-                                    <span>Settings</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./security.html">
-                                    <i class="bi bi-shield-check"></i>
-                                    <span>Security</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./help.html">
-                                    <i class="bi bi-question-circle"></i>
-                                    <span>Help & Support</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </aside>
+            <div class="sidebar-content">
+                <nav class="sidebar-nav">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}" 
+                                href="{{ route('dashboard') }}">
+                                <i class="bi bi-speedometer2"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        {{-- <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('analytics') ? 'active' : '' }}" 
+                                href="{{ route('analytics') }}">
+                                <i class="bi bi-graph-up"></i>
+                                <span>Analytics</span>
+                            </a>
+                        </li> --}}
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('user') ? 'active' : '' }}" 
+                                href="{{ route('user') }}">
+                                <i class="bi bi-people"></i>
+                                <span>Users</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('products') ? 'active' : '' }}" 
+                                href="{{ route('products') }}">
+                                <i class="bi bi-box"></i>
+                                <span>Products</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('orders') ? 'active' : '' }}" 
+                                href="{{ route('orders') }}">
+                                <i class="bi bi-bag-check"></i>
+                                <span>Orders</span>
+                            </a>
+                        </li>
+                        {{-- <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('forms') ? 'active' : '' }}" 
+                                href="{{ route('forms') }}">
+                                <i class="bi bi-ui-checks"></i>
+                                <span>Forms</span>
+                                <span class="badge bg-success rounded-pill ms-auto">New</span>
+                            </a>
+                        </li> --}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#elementsSubmenu" aria-expanded="false">
+                                <i class="bi bi-puzzle"></i>
+                                <span>Elements</span>
+                                <span class="badge bg-primary rounded-pill me-2">New</span>
+                                <i class="bi bi-chevron-down ms-auto"></i>
+                            </a>
+                            <div class="collapse" id="elementsSubmenu">
+                                <ul class="nav nav-submenu">
+                                    <li class="nav-item">
+                                        <a class="nav-link {{ request()->routeIs('overview') ? 'active' : '' }}" 
+                                href="{{ route('overview') }}">
+                                            <i class="bi bi-grid"></i>
+                                            <span>Overview</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link {{ request()->routeIs('elements-buttons') ? 'active' : '' }}" 
+                                href="{{ route('elements-buttons') }}">
+                                            <i class="bi bi-square"></i>
+                                            <span>Buttons</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link {{ request()->routeIs('elements-alerts') ? 'active' : '' }}" 
+                                href="{{ route('elements-alerts') }}">
+                                            <i class="bi bi-exclamation-triangle"></i>
+                                            <span>Alerts</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link {{ request()->routeIs('elements-badges') ? 'active' : '' }}" 
+                                href="{{ route('elements-badges') }}">
+                                            <i class="bi bi-award"></i>
+                                            <span>Badges</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link {{ request()->routeIs('elements-cards') ? 'active' : '' }}" 
+                                href="{{ route('elements-cards') }}">
+                                            <i class="bi bi-card-text"></i>
+                                            <span>Cards</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link {{ request()->routeIs('elements-modals') ? 'active' : '' }}" 
+                                href="{{ route('elements-modals') }}">
+                                            <i class="bi bi-window"></i>
+                                            <span>Modals</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link {{ request()->routeIs('elements-forms') ? 'active' : '' }}" 
+                                href="{{ route('elements-forms') }}">
+                                            <i class="bi bi-ui-checks"></i>
+                                            <span>Forms</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link {{ request()->routeIs('elements-tables') ? 'active' : '' }}" 
+                                href="{{ route('elements-tables') }}">
+                                            <i class="bi bi-table"></i>
+                                            <span>Tables</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        {{-- <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('reports') ? 'active' : '' }}" 
+                                href="{{ route('reports') }}">
+                                <i class="bi bi-file-earmark-text"></i>
+                                <span>Reports</span>
+                            </a>
+                        </li> --}}
+                        {{-- <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('messages') ? 'active' : '' }}" 
+                                href="{{ route('messages') }}">
+                                <i class="bi bi-chat-dots"></i>
+                                <span>Messages</span>
+                                <span class="badge bg-danger rounded-pill ms-auto">3</span>
+                            </a>
+                        </li> --}}
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('calendar') ? 'active' : '' }}" 
+                                href="{{ route('calendar') }}">
+                                <i class="bi bi-calendar-event"></i>
+                                <span>Calendar</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('files') ? 'active' : '' }}" 
+                                href="{{ route('files') }}">
+                                <i class="bi bi-folder2-open"></i>
+                                <span>Files</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mt-3">
+                            <small class="text-muted px-3 text-uppercase fw-bold">Admin</small>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('settings') ? 'active' : '' }}" 
+                                href="{{ route('settings') }}">
+                                <i class="bi bi-gear"></i>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('security') ? 'active' : '' }}" 
+                                href="{{ route('security') }}">
+                                <i class="bi bi-shield-check"></i>
+                                <span>Security</span>
+                            </a>
+                        </li>
+                        {{-- <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('help') ? 'active' : '' }}" 
+                                href="{{ route('help') }}">
+                                <i class="bi bi-question-circle"></i>
+                                <span>Help & Support</span>
+                            </a>
+                        </li> --}}
+                    </ul>
+                </nav>
+            </div>
+        </aside>
 
             <!-- Floating Hamburger Menu -->
             <button class="hamburger-menu" 
