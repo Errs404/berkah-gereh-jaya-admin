@@ -8,8 +8,13 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('dashboard.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::get('/orders', function () {
+    return view('orders.orders');
+})->middleware(['auth', 'verified'])->name('orders');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -41,9 +46,9 @@ Route::get('/products', function () {
     return view('products');
 })->name('products');
 
-Route::get('/orders', function () {
-    return view('orders');
-})->name('orders');
+// Route::get('/orders', function () {
+//     return view('orders');
+// })->name('orders');
 
 Route::get('/messages', function () {
     return view('messages');
