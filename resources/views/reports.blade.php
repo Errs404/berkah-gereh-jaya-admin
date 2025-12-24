@@ -10,8 +10,8 @@
     <meta name="keywords" content="bootstrap, admin, dashboard, reports, analytics, charts, data">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="./assets/favicon-CvUZKS4z.svg">
-    <link rel="icon" type="image/png" href="./assets/favicon-B_cwPWBd.png">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('assets/favicon.ico') }}">
+    <link rel="icon" type="image/png" href="{{asset('assets/logo.png') }}">
     
     <!-- PWA Manifest -->
     <link rel="manifest" href="./assets/manifest-DTaoG9pG.json">
