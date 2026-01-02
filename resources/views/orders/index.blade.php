@@ -534,6 +534,15 @@
                                                 <option value="week">This Week</option>
                                                 <option value="month">This Month</option>
                                             </select>
+
+                                            <!-- Date Picker -->
+                                            <div x-data="ordersFilter">
+<input type="date"
+    class="form-control form-control-sm"
+    x-model="datePicker"
+    @change="filterOrders()"
+    style="width: 150px;">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -573,6 +582,7 @@
                                                 <th @click="sortBy('orderNumber')" class="sortable">Order #</th>
                                                 <th>Customer</th>
                                                 <th>Items</th>
+                                                <th>Count</th>
                                                 <th @click="sortBy('total')" class="sortable">Total</th>
                                                 <th>Status</th>
                                                 <th @click="sortBy('orderDate')" class="sortable">Date</th>
@@ -717,80 +727,96 @@
 
     <!-- Order Details Modal -->
     <div class="modal fade" id="orderModal" tabindex="-1">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Order Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <!-- Order Information -->
-                        <div class="col-lg-8">
-                            <h6 class="mb-3">Order Items</h6>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Product</th>
-                                            <th>Quantity</th>
-                                            <th>Price</th>
-                                            <th>Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Sample Product</td>
-                                            <td>2</td>
-                                            <td>$49.99</td>
-                                            <td>$99.98</td>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th colspan="3">Total:</th>
-                                            <th>$99.98</th>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Order</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <form x-data="orderForm" @submit.prevent="saveOrder">
+                    <div class="row g-3">
+
+                        <!-- Order Number -->
+                        <div class="col-md-6">
+                            <label class="form-label">Order Number</label>
+                            <input type="text" class="form-control"
+                                   x-model="form.orderNumber" required>
                         </div>
 
-                        <!-- Order Timeline -->
-                        <div class="col-lg-4">
-                            <h6 class="mb-3">Order Timeline</h6>
-                            <div class="order-timeline">
-                                <div class="timeline-item completed">
-                                    <div class="fw-medium">Order Placed</div>
-                                    <small class="text-muted">Jan 15, 2025 at 10:30 AM</small>
-                                </div>
-                                <div class="timeline-item completed">
-                                    <div class="fw-medium">Payment Confirmed</div>
-                                    <small class="text-muted">Jan 15, 2025 at 10:32 AM</small>
-                                </div>
-                                <div class="timeline-item active">
-                                    <div class="fw-medium">Processing</div>
-                                    <small class="text-muted">Jan 16, 2025 at 9:15 AM</small>
-                                </div>
-                                <div class="timeline-item">
-                                    <div class="fw-medium">Shipped</div>
-                                    <small class="text-muted">Pending</small>
-                                </div>
-                                <div class="timeline-item">
-                                    <div class="fw-medium">Delivered</div>
-                                    <small class="text-muted">Pending</small>
-                                </div>
-                            </div>
+                        <!-- Customer -->
+                        <div class="col-md-6">
+                            <label class="form-label">Customer Name</label>
+                            <input type="text" class="form-control"
+                                   x-model="form.customer" required>
                         </div>
+
+                        <!-- Items -->
+                        <div class="col-12">
+                            <label class="form-label">Items</label>
+                            <input type="text" class="form-control"
+                                   placeholder="Example: Keyboard, Mouse"
+                                   x-model="form.items" required>
+                        </div>
+
+                        <!-- Count -->
+                        <div class="col-md-4">
+                            <label class="form-label">Item Count</label>
+                            <input type="number" min="1"
+                                   class="form-control"
+                                   x-model="form.count" required>
+                        </div>
+
+                        <!-- Total -->
+                        <div class="col-md-4">
+                            <label class="form-label">Total Price</label>
+                            <input type="number" min="0"
+                                   class="form-control"
+                                   x-model="form.total" required>
+                        </div>
+
+                        <!-- Status -->
+                        <div class="col-md-4">
+                            <label class="form-label">Status</label>
+                            <select class="form-select"
+                                    x-model="form.status" required>
+                                <option value="">Select Status</option>
+                                <option value="pending">Pending</option>
+                                <option value="processing">Processing</option>
+                                <option value="shipped">Shipped</option>
+                                <option value="delivered">Delivered</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                        </div>
+
+                        <!-- Order Date -->
+                        <div class="col-md-6">
+                            <label class="form-label">Order Date</label>
+                            <input type="date" class="form-control"
+                                   x-model="form.orderDate" required>
+                        </div>
+
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Update Status</button>
-                </div>
+
+                    <div class="modal-footer mt-3">
+                        <button type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+                        <button type="submit"
+                                class="btn btn-primary">
+                            Save Order
+                        </button>
+                    </div>
+                </form>
             </div>
+
         </div>
     </div>
+</div>
+
 
     <!-- Bulk Update Modal -->
     <div class="modal fade" id="bulkUpdateModal" tabindex="-1">
@@ -833,6 +859,44 @@
     <!-- Main App Script -->
 
     <script>
+document.addEventListener('alpine:init', () => {
+    Alpine.data('orderForm', () => ({
+        form: {
+            orderNumber: '',
+            customer: '',
+            items: '',
+            count: 1,
+            total: 0,
+            status: '',
+            orderDate: ''
+        },
+
+        saveOrder() {
+            console.log('Order saved:', this.form);
+
+            // TODO:
+            // - push ke array orders
+            // - atau kirim ke backend (Axios / fetch)
+
+            // reset form
+            this.form = {
+                orderNumber: '',
+                customer: '',
+                items: '',
+                count: 1,
+                total: 0,
+                status: '',
+                orderDate: ''
+            };
+
+            // close modal
+            bootstrap.Modal.getInstance(
+                document.getElementById('orderModal')
+            ).hide();
+        }
+    }))
+})
+
         document.addEventListener('DOMContentLoaded', () => {
             const toggleButton = document.querySelector('[data-sidebar-toggle]');
             const wrapper = document.getElementById('admin-wrapper');
