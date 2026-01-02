@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 | Public
 |--------------------------------------------------------------------------
 */
+
 Route::view('/', 'welcome')->name('home');
 
 /*
@@ -17,7 +18,7 @@ Route::view('/', 'welcome')->name('home');
 */
 Route::middleware(['auth', 'verified'])->group(function () {
     // Dashboard & main pages
-    Route::view('/dashboard', 'dashboard.dashboard')->name('dashboard');
+    Route::view('/dashboard', 'dashboard.index')->name('dashboard');
     Route::view('/orders', 'orders.orders')->name('orders');
 
     Route::view('/user', 'user')->name('user');
@@ -33,7 +34,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('/calendar', 'calendar')->name('calendar');
 
     // Kalau "overview" itu sebenarnya dashboard lain, samakan view-nya (pilih salah satu)
-    Route::view('/overview', 'dashboard.dashboard')->name('overview');
+    Route::view('/overview', 'dashboard.index')->name('overview');
 
     /*
     |--------------------------------------------------------------------------

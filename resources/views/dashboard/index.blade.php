@@ -251,49 +251,49 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link {{ request()->routeIs('elements-buttons') ? 'active' : '' }}" 
-                                href="{{ route('elements-buttons') }}">
+                                href="{{ route('elements.buttons') }}">
                                             <i class="bi bi-square"></i>
                                             <span>Buttons</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link {{ request()->routeIs('elements-alerts') ? 'active' : '' }}" 
-                                href="{{ route('elements-alerts') }}">
+                                href="{{ route('elements.alerts') }}">
                                             <i class="bi bi-exclamation-triangle"></i>
                                             <span>Alerts</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link {{ request()->routeIs('elements-badges') ? 'active' : '' }}" 
-                                href="{{ route('elements-badges') }}">
+                                href="{{ route('elements.badges') }}">
                                             <i class="bi bi-award"></i>
                                             <span>Badges</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link {{ request()->routeIs('elements-cards') ? 'active' : '' }}" 
-                                href="{{ route('elements-cards') }}">
+                                href="{{ route('elements.cards') }}">
                                             <i class="bi bi-card-text"></i>
                                             <span>Cards</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link {{ request()->routeIs('elements-modals') ? 'active' : '' }}" 
-                                href="{{ route('elements-modals') }}">
+                                href="{{ route('elements.modals') }}">
                                             <i class="bi bi-window"></i>
                                             <span>Modals</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link {{ request()->routeIs('elements-forms') ? 'active' : '' }}" 
-                                href="{{ route('elements-forms') }}">
+                                href="{{ route('elements.forms') }}">
                                             <i class="bi bi-ui-checks"></i>
                                             <span>Forms</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link {{ request()->routeIs('elements-tables') ? 'active' : '' }}" 
-                                href="{{ route('elements-tables') }}">
+                                href="{{ route('elements.tables') }}">
                                             <i class="bi bi-table"></i>
                                             <span>Tables</span>
                                         </a>
