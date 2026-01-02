@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrderController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +21,7 @@ Route::view('/', 'welcome')->name('home');
 Route::middleware(['auth', 'verified'])->group(function () {
     // Dashboard & main pages
     Route::view('/dashboard', 'dashboard.index')->name('dashboard');
-    Route::view('/orders', 'orders.orders')->name('orders');
+    Route::view('/orders', 'orders.index')->name('orders');
 
     Route::view('/user', 'user')->name('user');
     Route::view('/settings', 'settings')->name('settings');
@@ -51,6 +53,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::view('/buttons', 'elements-buttons')->name('buttons');
         Route::view('/badges', 'elements-badges')->name('badges');
         Route::view('/alerts', 'elements-alerts')->name('alerts');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Orders module
+    |--------------------------------------------------------------------------
+    */
+    Route::middleware(['auth', 'verified'])->group(function () {
+        Route::get('/orders', [OrderController::class, 'index'])->name('orders');
     });
 
     /*

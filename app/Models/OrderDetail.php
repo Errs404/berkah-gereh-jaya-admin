@@ -3,12 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class OrderDetail extends Model
 {
-    use HasFactory;
-
     protected $table = 'dat_order_detail';
 
     protected $fillable = [
@@ -19,23 +16,20 @@ class OrderDetail extends Model
         'subtotal',
     ];
 
-    /**
-     * Relasi ke order (header)
-     */
+    protected $casts = [
+        'harga' => 'decimal:2',
+        'subtotal' => 'decimal:2',
+        'qty' => 'integer',
+    ];
+
     public function order()
     {
-        return $this->belongsTo(Order::class, 'order_id');
+        return $this->belongsTo(Order::class, 'order_id', 'id');
     }
 
-    /**
-     * Relasi ke master barang
-     */
-    // public function barang()
-    // {
-    //     return $this->belongsTo(
-    //         MstBarang::class,
-    //         'kode_barang',
-    //         'kode_barang'
-    //     );
-    // }
+    // Join ke barang pakai kode_barang (bukan id)
+    public function barang()
+    {
+        return $this->belongsTo(Barang::class, 'kode_barang', 'kode_barang');
+    }
 }

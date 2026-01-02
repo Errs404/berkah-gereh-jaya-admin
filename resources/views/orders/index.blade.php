@@ -570,136 +570,168 @@
 
                                 <!-- Table -->
                                 <div class="table-responsive">
-                                    <table class="table table-hover mb-0">
-                                        <thead class="table-light">
-                                            <tr>
-                                                <th style="width: 40px;">
-                                                    <input type="checkbox"
-                                                        class="form-check-input"
-                                                        @change="toggleAll($event.target.checked)"
-                                                        :checked="selectedOrders.length === filteredOrders.length && filteredOrders.length > 0">
-                                                </th>
-                                                <th @click="sortBy('orderNumber')" class="sortable">Order #</th>
-                                                <th>Customer</th>
-                                                <th>Items</th>
-                                                <th>Count</th>
-                                                <th @click="sortBy('total')" class="sortable">Total</th>
-                                                <th>Status</th>
-                                                <th @click="sortBy('orderDate')" class="sortable">Date</th>
-                                                <th style="width: 120px;">Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <template x-for="order in paginatedOrders" :key="order.id">
-                                                <tr>
-                                                    <td>
-                                                        <input type="checkbox"
-                                                            class="form-check-input"
-                                                            :value="order.id"
-                                                            x-model="selectedOrders">
-                                                    </td>
-                                                    <td>
-                                                        <div class="fw-medium" x-text="order.orderNumber"></div>
-                                                        <small class="text-muted" x-text="'ID: ' + order.id"></small>
-                                                    </td>
-                                                    <td>
-                                                        <div class="order-customer">
-                                                            <img :src="order.customer.avatar"
-                                                                class="customer-avatar"
-                                                                :alt="order.customer.name">
-                                                            <div>
-                                                                <div class="fw-medium" x-text="order.customer.name"></div>
-                                                                <small class="text-muted" x-text="order.customer.email"></small>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="order-items">
-                                                            <div x-text="order.itemCount + ' item' + (order.itemCount > 1 ? 's' : '')"></div>
-                                                            <small class="text-muted" x-text="order.items[0].name + (order.itemCount > 1 ? ' +' + (order.itemCount - 1) + ' more' : '')"></small>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="order-items d-flex justify-content-between align-items-center">
-                                                            {{-- <div>
-                                                                <div x-text="order.itemCount + ' item' + (order.itemCount > 1 ? 's' : '')"></div>
-                                                                <small class="text-muted"
-                                                                    x-text="order.items[0].name + (order.itemCount > 1 ? ' +' + (order.itemCount - 1) + ' more' : '')">
-                                                                </small>
-                                                            </div> --}}
+  <table class="table table-hover mb-0">
+    <thead class="table-light">
+      <tr>
+        <th style="width: 40px;">
+          <input type="checkbox" class="form-check-input"
+            x-on:change="toggleAll($event.target.checked)">
+        </th>
+        <th>Order #</th>
+        <th>Customer</th>
+        <th>Items</th>
+        <th>Count</th>
+        <th>Total</th>
+        <th>Status</th>
+        <th>Date</th>
+        <th style="width: 120px;">Actions</th>
+      </tr>
+    </thead>
 
-                                                            <!-- COUNT BADGE -->
-                                                            <span class="badge bg-secondary ms-2" x-text="order.itemCount"></span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="fw-medium" x-text="`$${order.total}`"></td>
-                                                    <td>
-                                                        <span class="order-status"
-                                                            :class="{
-                                                                  'status-pending': order.status === 'pending',
-                                                                  'status-processing': order.status === 'processing',
-                                                                  'status-shipped': order.status === 'shipped',
-                                                                  'status-delivered': order.status === 'delivered',
-                                                                  'status-cancelled': order.status === 'cancelled'
-                                                              }"
-                                                            x-text="order.status.charAt(0).toUpperCase() + order.status.slice(1)"></span>
-                                                    </td>
-                                                    <td x-text="order.orderDate"></td>
-                                                    <td>
-                                                        <div class="dropdown">
-                                                            <button class="btn btn-sm btn-outline-secondary dropdown-toggle"
-                                                                type="button"
-                                                                data-bs-toggle="dropdown">
-                                                                <i class="bi bi-three-dots"></i>
-                                                            </button>
-                                                            <ul class="dropdown-menu">
-                                                                <li><a class="dropdown-item" href="#" @click="viewOrder(order)">
-                                                                        <i class="bi bi-eye me-2"></i>View Details
-                                                                    </a></li>
-                                                                <li><a class="dropdown-item" href="#" @click="trackOrder(order)">
-                                                                        <i class="bi bi-truck me-2"></i>Track Order
-                                                                    </a></li>
-                                                                <li><a class="dropdown-item" href="#" @click="printInvoice(order)">
-                                                                        <i class="bi bi-printer me-2"></i>Print Invoice
-                                                                    </a></li>
-                                                                <li>
-                                                                    <hr class="dropdown-divider">
-                                                                </li>
-                                                                <li><a class="dropdown-item text-danger" href="#" @click="cancelOrder(order)">
-                                                                        <i class="bi bi-x-circle me-2"></i>Cancel Order
-                                                                    </a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </template>
-                                        </tbody>
-                                    </table>
-                                </div>
+    <tbody>
+      @forelse($orders as $order)
+        @php
+          // ambil 1 nama barang pertama untuk preview
+          $firstDetail = $order->details->first();
+          $firstItemName = optional(optional($firstDetail)->barang)->nama_barang;
+
+          $moreCount = max($order->detail_lines - 1, 0);
+
+          // count versi kamu di UI: lebih masuk akal total qty
+          $qtyTotal = (int) ($order->item_qty_total ?? 0);
+
+          $status = strtolower($order->status ?? 'pending');
+        @endphp
+
+        <tr>
+          <td>
+            <input type="checkbox" class="form-check-input"
+              value="{{ $order->id }}" x-model="selectedOrders">
+          </td>
+
+          <td>
+            <div class="fw-medium">{{ $order->kode_order }}</div>
+            <small class="text-muted">ID: {{ $order->id }}</small>
+          </td>
+
+          <td>
+            <div class="order-customer d-flex align-items-center gap-2">
+              {{-- Avatar placeholder (opsional). Kalau tidak mau external, hapus img ini --}}
+              <img
+                src="https://ui-avatars.com/api/?name={{ urlencode($order->nama_customer) }}&background=2d3748&color=fff"
+                class="customer-avatar"
+                alt="{{ $order->nama_customer }}"
+                style="width:32px;height:32px;border-radius:50%;object-fit:cover;"
+              >
+              <div>
+                <div class="fw-medium">{{ $order->nama_customer }}</div>
+                <small class="text-muted">{{ $order->email_customer }}</small>
+              </div>
+            </div>
+          </td>
+
+          <td>
+            <div class="order-items">
+              <div>{{ $order->detail_lines }} item{{ $order->detail_lines > 1 ? 's' : '' }}</div>
+              <small class="text-muted">
+                {{ $firstItemName ?? '-' }}
+                @if($moreCount > 0)
+                  +{{ $moreCount }} more
+                @endif
+              </small>
+            </div>
+          </td>
+
+          <td>
+            <span class="badge bg-secondary">{{ $qtyTotal }}</span>
+          </td>
+
+          <td class="fw-medium">
+            Rp {{ number_format((float)$order->total, 0, ',', '.') }}
+          </td>
+
+          <td>
+            <span class="order-status
+              {{ $status === 'pending' ? 'status-pending' : '' }}
+              {{ $status === 'processing' ? 'status-processing' : '' }}
+              {{ $status === 'shipped' ? 'status-shipped' : '' }}
+              {{ $status === 'delivered' ? 'status-delivered' : '' }}
+              {{ $status === 'cancelled' ? 'status-cancelled' : '' }}
+            ">
+              {{ ucfirst($status) }}
+            </span>
+          </td>
+
+          <td>{{ optional($order->created_at)->format('Y-m-d') }}</td>
+
+          <td>
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                <i class="bi bi-three-dots"></i>
+              </button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="{{ route('orders.show', $order) ?? '#' }}">
+                    <i class="bi bi-eye me-2"></i>View Details
+                  </a>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <a class="dropdown-item text-danger" href="#"
+                     onclick="event.preventDefault(); alert('Implement cancel di controller ya');">
+                    <i class="bi bi-x-circle me-2"></i>Cancel Order
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      @empty
+        <tr>
+          <td colspan="9" class="text-center text-muted py-4">
+            Belum ada order.
+          </td>
+        </tr>
+      @endforelse
+    </tbody>
+  </table>
+</div>
+
 
                                 <!-- Pagination -->
-                                <div class="d-flex justify-content-between align-items-center p-3">
-                                    <div class="text-muted">
-                                        Showing <span x-text="(currentPage - 1) * itemsPerPage + 1"></span> to
-                                        <span x-text="Math.min(currentPage * itemsPerPage, filteredOrders.length)"></span> of
-                                        <span x-text="filteredOrders.length"></span> results
-                                    </div>
-                                    <nav>
-                                        <ul class="pagination pagination-sm mb-0">
-                                            <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
-                                                <a class="page-link" href="#" @click.prevent="goToPage(currentPage - 1)">Previous</a>
-                                            </li>
-                                            <template x-for="(page, index) in visiblePages" :key="`page-${index}`">
-                                                <li class="page-item" :class="{ 'active': page === currentPage }">
-                                                    <a class="page-link" href="#" @click.prevent="page !== '...' && goToPage(page)" x-text="page"></a>
-                                                </li>
-                                            </template>
-                                            <li class="page-item" :class="{ 'disabled': currentPage === totalPages }">
-                                                <a class="page-link" href="#" @click.prevent="goToPage(currentPage + 1)">Next</a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
+<div class="d-flex justify-content-between align-items-center p-3">
+  <div class="text-muted">
+    Showing
+    <span class="fw-medium">{{ $orders->firstItem() ?? 0 }}</span>
+    to
+    <span class="fw-medium">{{ $orders->lastItem() ?? 0 }}</span>
+    of
+    <span class="fw-medium">{{ $orders->total() }}</span>
+    results
+  </div>
+
+  <nav>
+    <ul class="pagination pagination-sm mb-0">
+      {{-- Previous --}}
+      <li class="page-item {{ $orders->onFirstPage() ? 'disabled' : '' }}">
+        <a class="page-link" href="{{ $orders->previousPageUrl() ?? '#' }}">Previous</a>
+      </li>
+
+      {{-- Page Numbers (simple: 1..N) --}}
+      @for ($page = 1; $page <= $orders->lastPage(); $page++)
+        <li class="page-item {{ $page == $orders->currentPage() ? 'active' : '' }}">
+          <a class="page-link" href="{{ $orders->url($page) }}">{{ $page }}</a>
+        </li>
+      @endfor
+
+      {{-- Next --}}
+      <li class="page-item {{ $orders->hasMorePages() ? '' : 'disabled' }}">
+        <a class="page-link" href="{{ $orders->nextPageUrl() ?? '#' }}">Next</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
                             </div>
                         </div>
 

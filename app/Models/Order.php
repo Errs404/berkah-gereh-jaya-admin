@@ -3,12 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Order extends Model
 {
-    use HasFactory;
-
     protected $table = 'dat_order';
 
     protected $fillable = [
@@ -19,11 +16,12 @@ class Order extends Model
         'total',
     ];
 
-    /**
-     * Relasi ke detail order
-     */
+    protected $casts = [
+        'total' => 'decimal:2',
+    ];
+
     public function details()
     {
-        return $this->hasMany(OrderDetail::class, 'order_id');
+        return $this->hasMany(OrderDetail::class, 'order_id', 'id');
     }
 }

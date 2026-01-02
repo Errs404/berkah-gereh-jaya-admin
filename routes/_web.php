@@ -14,7 +14,7 @@ Route::get('/dashboard', function () {
 
 
 Route::get('/orders', function () {
-    return view('orders.orders');
+    return view('orders.index');
 })->middleware(['auth', 'verified'])->name('orders');
 
 Route::middleware('auth')->group(function () {
