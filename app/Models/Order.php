@@ -10,8 +10,8 @@ class Order extends Model
 
     protected $fillable = [
         'kode_order',
-        'nama_customer',
-        'email_customer',
+        'nama_distributor',
+        'pic_distributor',
         'status',
         'total',
     ];

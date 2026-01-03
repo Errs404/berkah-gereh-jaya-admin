@@ -12,7 +12,7 @@
                         <thead class="table-light">
                             <tr>
                                 <th>Order ID</th>
-                                <th>Customer</th>
+                                <th>Distributor</th>
                                 <th>Amount</th>
                                 <th>Status</th>
                                 <th>Date</th>

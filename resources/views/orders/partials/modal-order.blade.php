@@ -22,13 +22,37 @@
             </div>
 
             <div class="col-md-6">
-              <label class="form-label">Nama Customer</label>
-              <input type="text" class="form-control" name="nama_customer" required>
-            </div>
+  <label class="form-label">Distributor</label>
+
+  <input
+    type="text"
+    class="form-control"
+    list="distributor-list"
+    name="nama_distributor"
+    placeholder="Cari distributor..."
+    onchange="setDistributor(this.value)"
+    required
+  >
+
+  <!-- hidden value untuk backend -->
+  <input type="hidden" name="distributor_id" id="distributor_id">
+
+  <datalist id="distributor-list">
+    @foreach ($distributors as $d)
+      <option
+        value="{{ $d->nama }}"
+        data-id="{{ $d->id }}"
+      >
+        {{ $d->pic }}
+      </option>
+    @endforeach
+  </datalist>
+</div>
+
 
             <div class="col-md-6">
-              <label class="form-label">Email Customer</label>
-              <input type="email" class="form-control" name="email_customer">
+              <label class="form-label">PIC Distributor</label>
+              <input type="email" class="form-control" name="pic_distributor">
             </div>
 
             <div class="col-md-6">

@@ -6,7 +6,7 @@
           <input type="checkbox" class="form-check-input" @change="toggleAll($event.target.checked)">
         </th>
         <th>Order #</th>
-        <th>Customer</th>
+        <th>Distributor</th>
         <th>Items</th>
         <th>Count</th>
         <th>Total</th>
@@ -37,14 +37,14 @@
           </td>
 
           <td>
-            <div class="order-customer d-flex align-items-center gap-2">
+            <div class="order-distributor d-flex align-items-center gap-2">
               <img
-                src="https://ui-avatars.com/api/?name={{ urlencode($order->nama_customer) }}&background=2d3748&color=fff"
-                alt="{{ $order->nama_customer }}"
+                src="https://ui-avatars.com/api/?name={{ urlencode($order->nama_distributor) }}&background=2d3748&color=fff"
+                alt="{{ $order->nama_distributor }}"
                 style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
               <div>
-                <div class="fw-medium">{{ $order->nama_customer }}</div>
-                <small class="text-muted">{{ $order->email_customer }}</small>
+                <div class="fw-medium">{{ $order->nama_distributor }}</div>
+                <small class="text-muted">{{ $order->pic_distributor }}</small>
               </div>
             </div>
           </td>

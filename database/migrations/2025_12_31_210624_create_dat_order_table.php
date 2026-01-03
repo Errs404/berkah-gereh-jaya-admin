@@ -10,8 +10,8 @@ return new class extends Migration {
         Schema::create('dat_order', function (Blueprint $table) {
             $table->id();
             $table->string('kode_order')->unique();
-            $table->string('nama_customer');
-            $table->string('email_customer')->nullable();
+            $table->string('nama_distributor');
+            $table->string('pic_distributor')->nullable();
             $table->enum('status', [
                 'pending',
                 'processing',
@@ -29,4 +29,3 @@ return new class extends Migration {
         Schema::dropIfExists('dat_order');
     }
 };
-

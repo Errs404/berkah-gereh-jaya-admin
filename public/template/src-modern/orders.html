@@ -539,7 +539,7 @@
                                                            :checked="selectedOrders.length === filteredOrders.length && filteredOrders.length > 0">
                                                 </th>
                                                 <th @click="sortBy('orderNumber')" class="sortable">Order #</th>
-                                                <th>Customer</th>
+                                                <th>Distributor</th>
                                                 <th>Items</th>
                                                 <th @click="sortBy('total')" class="sortable">Total</th>
                                                 <th>Status</th>
@@ -561,13 +561,13 @@
                                                         <small class="text-muted" x-text="'ID: ' + order.id"></small>
                                                     </td>
                                                     <td>
-                                                        <div class="order-customer">
-                                                            <img :src="order.customer.avatar" 
-                                                                 class="customer-avatar" 
-                                                                 :alt="order.customer.name">
+                                                        <div class="order-distributor">
+                                                            <img :src="order.distributor.avatar" 
+                                                                 class="distributor-avatar" 
+                                                                 :alt="order.distributor.name">
                                                             <div>
-                                                                <div class="fw-medium" x-text="order.customer.name"></div>
-                                                                <small class="text-muted" x-text="order.customer.email"></small>
+                                                                <div class="fw-medium" x-text="order.distributor.name"></div>
+                                                                <small class="text-muted" x-text="order.distributor.email"></small>
                                                             </div>
                                                         </div>
                                                     </td>
