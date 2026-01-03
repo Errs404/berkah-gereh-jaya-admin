@@ -61,8 +61,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
     |--------------------------------------------------------------------------
     */
     Route::middleware(['auth', 'verified'])->group(function () {
-        Route::get('/orders', [OrderController::class, 'index'])->name('orders');
+        Route::resource('orders', OrderController::class)
+            ->only(['index', 'store', 'show'])
+            ->names([
+                'index' => 'orders', // ini bikin route('orders') menunjuk ke index
+            ]);
+
+        Route::post('/orders/bulk-update', [OrderController::class, 'bulkUpdate'])
+            ->name('orders.bulkUpdate');
     });
+
+
 
     /*
     |--------------------------------------------------------------------------

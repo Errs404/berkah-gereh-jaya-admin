@@ -146,13 +146,13 @@
                                 <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Settings</a></li>
                                 <li><hr class="dropdown-divider"></li> --}}
                                     <li>
-    <form method="POST" action="{{ route('logout') }}">
-        @csrf
-        <button type="submit" class="dropdown-item">
-            <i class="bi bi-box-arrow-right me-2"></i> Logout
-        </button>
-    </form>
-</li>
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <button type="submit" class="dropdown-item">
+                                                <i class="bi bi-box-arrow-right me-2"></i> Logout
+                                            </button>
+                                        </form>
+                                    </li>
 
                                 </ul>
                             </div>
@@ -537,11 +537,11 @@
 
                                             <!-- Date Picker -->
                                             <div x-data="ordersFilter">
-<input type="date"
-    class="form-control form-control-sm"
-    x-model="datePicker"
-    @change="filterOrders()"
-    style="width: 150px;">
+                                                <input type="date"
+                                                    class="form-control form-control-sm"
+                                                    x-model="datePicker"
+                                                    @change="filterOrders()"
+                                                    style="width: 150px;">
                                             </div>
                                         </div>
                                     </div>
@@ -570,167 +570,168 @@
 
                                 <!-- Table -->
                                 <div class="table-responsive">
-  <table class="table table-hover mb-0">
-    <thead class="table-light">
-      <tr>
-        <th style="width: 40px;">
-          <input type="checkbox" class="form-check-input"
-            x-on:change="toggleAll($event.target.checked)">
-        </th>
-        <th>Order #</th>
-        <th>Customer</th>
-        <th>Items</th>
-        <th>Count</th>
-        <th>Total</th>
-        <th>Status</th>
-        <th>Date</th>
-        <th style="width: 120px;">Actions</th>
-      </tr>
-    </thead>
+                                    <table class="table table-hover mb-0">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th style="width: 40px;">
+                                                    <input type="checkbox" class="form-check-input"
+                                                        x-on:change="toggleAll($event.target.checked)">
+                                                </th>
+                                                <th>Order #</th>
+                                                <th>Customer</th>
+                                                <th>Items</th>
+                                                <th>Count</th>
+                                                <th>Total</th>
+                                                <th>Status</th>
+                                                <th>Date</th>
+                                                <th style="width: 120px;">Actions</th>
+                                            </tr>
+                                        </thead>
 
-    <tbody>
-      @forelse($orders as $order)
-        @php
-          // ambil 1 nama barang pertama untuk preview
-          $firstDetail = $order->details->first();
-          $firstItemName = optional(optional($firstDetail)->barang)->nama_barang;
+                                        <tbody>
+                                            @forelse($orders as $order)
+                                            @php
+                                            // ambil 1 nama barang pertama untuk preview
+                                            $firstDetail = $order->details->first();
+                                            $firstItemName = optional(optional($firstDetail)->barang)->nama_barang;
 
-          $moreCount = max($order->detail_lines - 1, 0);
+                                            $moreCount = max($order->detail_lines - 1, 0);
 
-          // count versi kamu di UI: lebih masuk akal total qty
-          $qtyTotal = (int) ($order->item_qty_total ?? 0);
+                                            // count versi kamu di UI: lebih masuk akal total qty
+                                            $qtyTotal = (int) ($order->item_qty_total ?? 0);
 
-          $status = strtolower($order->status ?? 'pending');
-        @endphp
+                                            $status = strtolower($order->status ?? 'pending');
+                                            @endphp
 
-        <tr>
-          <td>
-            <input type="checkbox" class="form-check-input"
-              value="{{ $order->id }}" x-model="selectedOrders">
-          </td>
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" class="form-check-input"
+                                                        value="{{ $order->id }}" x-model="selectedOrders">
+                                                </td>
 
-          <td>
-            <div class="fw-medium">{{ $order->kode_order }}</div>
-            <small class="text-muted">ID: {{ $order->id }}</small>
-          </td>
+                                                <td>
+                                                    <div class="fw-medium">{{ $order->kode_order }}</div>
+                                                    <small class="text-muted">ID: {{ $order->id }}</small>
+                                                </td>
 
-          <td>
-            <div class="order-customer d-flex align-items-center gap-2">
-              {{-- Avatar placeholder (opsional). Kalau tidak mau external, hapus img ini --}}
-              <img
-                src="https://ui-avatars.com/api/?name={{ urlencode($order->nama_customer) }}&background=2d3748&color=fff"
-                class="customer-avatar"
-                alt="{{ $order->nama_customer }}"
-                style="width:32px;height:32px;border-radius:50%;object-fit:cover;"
-              >
-              <div>
-                <div class="fw-medium">{{ $order->nama_customer }}</div>
-                <small class="text-muted">{{ $order->email_customer }}</small>
-              </div>
-            </div>
-          </td>
+                                                <td>
+                                                    <div class="order-customer d-flex align-items-center gap-2">
+                                                        {{-- Avatar placeholder (opsional). Kalau tidak mau external, hapus img ini --}}
+                                                        <img
+                                                            src="https://ui-avatars.com/api/?name={{ urlencode($order->nama_customer) }}&background=2d3748&color=fff"
+                                                            class="customer-avatar"
+                                                            alt="{{ $order->nama_customer }}"
+                                                            style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
+                                                        <div>
+                                                            <div class="fw-medium">{{ $order->nama_customer }}</div>
+                                                            <small class="text-muted">{{ $order->email_customer }}</small>
+                                                        </div>
+                                                    </div>
+                                                </td>
 
-          <td>
-            <div class="order-items">
-              <div>{{ $order->detail_lines }} item{{ $order->detail_lines > 1 ? 's' : '' }}</div>
-              <small class="text-muted">
-                {{ $firstItemName ?? '-' }}
-                @if($moreCount > 0)
-                  +{{ $moreCount }} more
-                @endif
-              </small>
-            </div>
-          </td>
+                                                <td>
+                                                    <div class="order-items">
+                                                        <div>{{ $order->detail_lines }} item{{ $order->detail_lines > 1 ? 's' : '' }}</div>
+                                                        <small class="text-muted">
+                                                            {{ $firstItemName ?? '-' }}
+                                                            @if($moreCount > 0)
+                                                            +{{ $moreCount }} more
+                                                            @endif
+                                                        </small>
+                                                    </div>
+                                                </td>
 
-          <td>
-            <span class="badge bg-secondary">{{ $qtyTotal }}</span>
-          </td>
+                                                <td>
+                                                    <span class="badge bg-secondary">{{ $qtyTotal }}</span>
+                                                </td>
 
-          <td class="fw-medium">
-            Rp {{ number_format((float)$order->total, 0, ',', '.') }}
-          </td>
+                                                <td class="fw-medium">
+                                                    Rp {{ number_format((float)$order->total, 0, ',', '.') }}
+                                                </td>
 
-          <td>
-            <span class="order-status
+                                                <td>
+                                                    <span class="order-status
               {{ $status === 'pending' ? 'status-pending' : '' }}
               {{ $status === 'processing' ? 'status-processing' : '' }}
               {{ $status === 'shipped' ? 'status-shipped' : '' }}
               {{ $status === 'delivered' ? 'status-delivered' : '' }}
               {{ $status === 'cancelled' ? 'status-cancelled' : '' }}
             ">
-              {{ ucfirst($status) }}
-            </span>
-          </td>
+                                                        {{ ucfirst($status) }}
+                                                    </span>
+                                                </td>
 
-          <td>{{ optional($order->created_at)->format('Y-m-d') }}</td>
+                                                <td>{{ optional($order->created_at)->format('Y-m-d') }}</td>
 
-          <td>
-            <div class="dropdown">
-              <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                <i class="bi bi-three-dots"></i>
-              </button>
-              <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-item" href="{{ route('orders.show', $order) ?? '#' }}">
-                    <i class="bi bi-eye me-2"></i>View Details
-                  </a>
-                </li>
-                <li><hr class="dropdown-divider"></li>
-                <li>
-                  <a class="dropdown-item text-danger" href="#"
-                     onclick="event.preventDefault(); alert('Implement cancel di controller ya');">
-                    <i class="bi bi-x-circle me-2"></i>Cancel Order
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </td>
-        </tr>
-      @empty
-        <tr>
-          <td colspan="9" class="text-center text-muted py-4">
-            Belum ada order.
-          </td>
-        </tr>
-      @endforelse
-    </tbody>
-  </table>
-</div>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                                            <i class="bi bi-three-dots"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li>
+                                                                <a class="dropdown-item" href="{{ route('orders.show', $order) ?? '#' }}">
+                                                                    <i class="bi bi-eye me-2"></i>View Details
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <hr class="dropdown-divider">
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item text-danger" href="#"
+                                                                    onclick="event.preventDefault(); alert('Implement cancel di controller ya');">
+                                                                    <i class="bi bi-x-circle me-2"></i>Cancel Order
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            @empty
+                                            <tr>
+                                                <td colspan="9" class="text-center text-muted py-4">
+                                                    Belum ada order.
+                                                </td>
+                                            </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
 
 
                                 <!-- Pagination -->
-<div class="d-flex justify-content-between align-items-center p-3">
-  <div class="text-muted">
-    Showing
-    <span class="fw-medium">{{ $orders->firstItem() ?? 0 }}</span>
-    to
-    <span class="fw-medium">{{ $orders->lastItem() ?? 0 }}</span>
-    of
-    <span class="fw-medium">{{ $orders->total() }}</span>
-    results
-  </div>
+                                <div class="d-flex justify-content-between align-items-center p-3">
+                                    <div class="text-muted">
+                                        Showing
+                                        <span class="fw-medium">{{ $orders->firstItem() ?? 0 }}</span>
+                                        to
+                                        <span class="fw-medium">{{ $orders->lastItem() ?? 0 }}</span>
+                                        of
+                                        <span class="fw-medium">{{ $orders->total() }}</span>
+                                        results
+                                    </div>
 
-  <nav>
-    <ul class="pagination pagination-sm mb-0">
-      {{-- Previous --}}
-      <li class="page-item {{ $orders->onFirstPage() ? 'disabled' : '' }}">
-        <a class="page-link" href="{{ $orders->previousPageUrl() ?? '#' }}">Previous</a>
-      </li>
+                                    <nav>
+                                        <ul class="pagination pagination-sm mb-0">
+                                            {{-- Previous --}}
+                                            <li class="page-item {{ $orders->onFirstPage() ? 'disabled' : '' }}">
+                                                <a class="page-link" href="{{ $orders->previousPageUrl() ?? '#' }}">Previous</a>
+                                            </li>
 
-      {{-- Page Numbers (simple: 1..N) --}}
-      @for ($page = 1; $page <= $orders->lastPage(); $page++)
-        <li class="page-item {{ $page == $orders->currentPage() ? 'active' : '' }}">
-          <a class="page-link" href="{{ $orders->url($page) }}">{{ $page }}</a>
-        </li>
-      @endfor
+                                            {{-- Page Numbers (simple: 1..N) --}}
+                                            @for ($page = 1; $page <= $orders->lastPage(); $page++)
+                                                <li class="page-item {{ $page == $orders->currentPage() ? 'active' : '' }}">
+                                                    <a class="page-link" href="{{ $orders->url($page) }}">{{ $page }}</a>
+                                                </li>
+                                                @endfor
 
-      {{-- Next --}}
-      <li class="page-item {{ $orders->hasMorePages() ? '' : 'disabled' }}">
-        <a class="page-link" href="{{ $orders->nextPageUrl() ?? '#' }}">Next</a>
-      </li>
-    </ul>
-  </nav>
-</div>
+                                                {{-- Next --}}
+                                                <li class="page-item {{ $orders->hasMorePages() ? '' : 'disabled' }}">
+                                                    <a class="page-link" href="{{ $orders->nextPageUrl() ?? '#' }}">Next</a>
+                                                </li>
+                                        </ul>
+                                    </nav>
+                                </div>
 
                             </div>
                         </div>
@@ -759,95 +760,95 @@
 
     <!-- Order Details Modal -->
     <div class="modal fade" id="orderModal" tabindex="-1">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Add New Order</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Order</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
 
-            <div class="modal-body">
-                <form x-data="orderForm" @submit.prevent="saveOrder">
-                    <div class="row g-3">
+                <div class="modal-body">
+                    <form x-data="orderForm" @submit.prevent="saveOrder">
+                        <div class="row g-3">
 
-                        <!-- Order Number -->
-                        <div class="col-md-6">
-                            <label class="form-label">Order Number</label>
-                            <input type="text" class="form-control"
-                                   x-model="form.orderNumber" required>
-                        </div>
+                            <!-- Order Number -->
+                            <div class="col-md-6">
+                                <label class="form-label">Order Number</label>
+                                <input type="text" class="form-control"
+                                    x-model="form.orderNumber" required>
+                            </div>
 
-                        <!-- Customer -->
-                        <div class="col-md-6">
-                            <label class="form-label">Customer Name</label>
-                            <input type="text" class="form-control"
-                                   x-model="form.customer" required>
-                        </div>
+                            <!-- Customer -->
+                            <div class="col-md-6">
+                                <label class="form-label">Customer Name</label>
+                                <input type="text" class="form-control"
+                                    x-model="form.customer" required>
+                            </div>
 
-                        <!-- Items -->
-                        <div class="col-12">
-                            <label class="form-label">Items</label>
-                            <input type="text" class="form-control"
-                                   placeholder="Example: Keyboard, Mouse"
-                                   x-model="form.items" required>
-                        </div>
+                            <!-- Items -->
+                            <div class="col-12">
+                                <label class="form-label">Items</label>
+                                <input type="text" class="form-control"
+                                    placeholder="Example: Keyboard, Mouse"
+                                    x-model="form.items" required>
+                            </div>
 
-                        <!-- Count -->
-                        <div class="col-md-4">
-                            <label class="form-label">Item Count</label>
-                            <input type="number" min="1"
-                                   class="form-control"
-                                   x-model="form.count" required>
-                        </div>
+                            <!-- Count -->
+                            <div class="col-md-4">
+                                <label class="form-label">Item Count</label>
+                                <input type="number" min="1"
+                                    class="form-control"
+                                    x-model="form.count" required>
+                            </div>
 
-                        <!-- Total -->
-                        <div class="col-md-4">
-                            <label class="form-label">Total Price</label>
-                            <input type="number" min="0"
-                                   class="form-control"
-                                   x-model="form.total" required>
-                        </div>
+                            <!-- Total -->
+                            <div class="col-md-4">
+                                <label class="form-label">Total Price</label>
+                                <input type="number" min="0"
+                                    class="form-control"
+                                    x-model="form.total" required>
+                            </div>
 
-                        <!-- Status -->
-                        <div class="col-md-4">
-                            <label class="form-label">Status</label>
-                            <select class="form-select"
+                            <!-- Status -->
+                            <div class="col-md-4">
+                                <label class="form-label">Status</label>
+                                <select class="form-select"
                                     x-model="form.status" required>
-                                <option value="">Select Status</option>
-                                <option value="pending">Pending</option>
-                                <option value="processing">Processing</option>
-                                <option value="shipped">Shipped</option>
-                                <option value="delivered">Delivered</option>
-                                <option value="cancelled">Cancelled</option>
-                            </select>
+                                    <option value="">Select Status</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="processing">Processing</option>
+                                    <option value="shipped">Shipped</option>
+                                    <option value="delivered">Delivered</option>
+                                    <option value="cancelled">Cancelled</option>
+                                </select>
+                            </div>
+
+                            <!-- Order Date -->
+                            <div class="col-md-6">
+                                <label class="form-label">Order Date</label>
+                                <input type="date" class="form-control"
+                                    x-model="form.orderDate" required>
+                            </div>
+
                         </div>
 
-                        <!-- Order Date -->
-                        <div class="col-md-6">
-                            <label class="form-label">Order Date</label>
-                            <input type="date" class="form-control"
-                                   x-model="form.orderDate" required>
-                        </div>
-
-                    </div>
-
-                    <div class="modal-footer mt-3">
-                        <button type="button"
+                        <div class="modal-footer mt-3">
+                            <button type="button"
                                 class="btn btn-secondary"
                                 data-bs-dismiss="modal">
-                            Cancel
-                        </button>
-                        <button type="submit"
+                                Cancel
+                            </button>
+                            <button type="submit"
                                 class="btn btn-primary">
-                            Save Order
-                        </button>
-                    </div>
-                </form>
-            </div>
+                                Save Order
+                            </button>
+                        </div>
+                    </form>
+                </div>
 
+            </div>
         </div>
     </div>
-</div>
 
 
     <!-- Bulk Update Modal -->
@@ -891,43 +892,43 @@
     <!-- Main App Script -->
 
     <script>
-document.addEventListener('alpine:init', () => {
-    Alpine.data('orderForm', () => ({
-        form: {
-            orderNumber: '',
-            customer: '',
-            items: '',
-            count: 1,
-            total: 0,
-            status: '',
-            orderDate: ''
-        },
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('orderForm', () => ({
+                form: {
+                    orderNumber: '',
+                    customer: '',
+                    items: '',
+                    count: 1,
+                    total: 0,
+                    status: '',
+                    orderDate: ''
+                },
 
-        saveOrder() {
-            console.log('Order saved:', this.form);
+                saveOrder() {
+                    console.log('Order saved:', this.form);
 
-            // TODO:
-            // - push ke array orders
-            // - atau kirim ke backend (Axios / fetch)
+                    // TODO:
+                    // - push ke array orders
+                    // - atau kirim ke backend (Axios / fetch)
 
-            // reset form
-            this.form = {
-                orderNumber: '',
-                customer: '',
-                items: '',
-                count: 1,
-                total: 0,
-                status: '',
-                orderDate: ''
-            };
+                    // reset form
+                    this.form = {
+                        orderNumber: '',
+                        customer: '',
+                        items: '',
+                        count: 1,
+                        total: 0,
+                        status: '',
+                        orderDate: ''
+                    };
 
-            // close modal
-            bootstrap.Modal.getInstance(
-                document.getElementById('orderModal')
-            ).hide();
-        }
-    }))
-})
+                    // close modal
+                    bootstrap.Modal.getInstance(
+                        document.getElementById('orderModal')
+                    ).hide();
+                }
+            }))
+        })
 
         document.addEventListener('DOMContentLoaded', () => {
             const toggleButton = document.querySelector('[data-sidebar-toggle]');

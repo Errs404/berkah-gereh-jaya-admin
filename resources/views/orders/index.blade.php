@@ -5,7 +5,8 @@
 @section('body_class', 'order-management')
 
 @push('scripts')
-  @vite(['resources/js/pages/orders.js'])
+  {{-- Paling aman: gunakan public asset dulu --}}
+  <script src="{{ asset('assets/js/pages/orders-page.js') }}"></script>
 @endpush
 
 @section('content')
@@ -28,30 +29,61 @@
     </div>
   </div>
 
-  <div x-data="orderTable" x-init="init()">
-
-    {{-- stats / chart block bisa kamu pecah jadi partial juga kalau mau --}}
-    {{-- @include('orders.partials.stats') --}}
-    {{-- @include('orders.partials.charts') --}}
-
+  <div x-data="orderTable()" x-init="init()">
     <div class="card">
       <div class="card-header">
-        {{-- filter toolbar tetap di sini atau dijadikan partial --}}
-        ...
+        <div class="row align-items-center">
+          <div class="col">
+            <h5 class="card-title mb-0">Orders</h5>
+          </div>
+          <div class="col-auto">
+            <div class="d-flex gap-2">
+              <div class="position-relative">
+                <input type="search" class="form-control form-control-sm" placeholder="Search orders..."
+                  x-model="searchQuery" @input="filterOrders()" style="width: 200px;">
+                <i class="bi bi-search position-absolute top-50 end-0 translate-middle-y me-2 text-muted"></i>
+              </div>
+
+              <select class="form-select form-select-sm" x-model="statusFilter" @change="filterOrders()" style="width: 150px;">
+                <option value="">All Status</option>
+                <option value="pending">Pending</option>
+                <option value="processing">Processing</option>
+                <option value="shipped">Shipped</option>
+                <option value="delivered">Delivered</option>
+                <option value="cancelled">Cancelled</option>
+              </select>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="card-body p-0">
-        {{-- bulk bar --}}
-        ...
+        <div class="bulk-actions-bar p-3 bg-light border-bottom"
+          x-show="selectedOrders.length > 0" x-transition>
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="text-muted">
+              <span x-text="selectedOrders.length"></span> order(s) selected
+            </span>
+            <div class="d-flex gap-2">
+              <button class="btn btn-sm btn-outline-secondary" @click="bulkAction('processing')">
+                <i class="bi bi-arrow-clockwise me-1"></i>Mark Processing
+              </button>
+              <button class="btn btn-sm btn-outline-info" @click="bulkAction('shipped')">
+                <i class="bi bi-truck me-1"></i>Mark Shipped
+              </button>
+              <button class="btn btn-sm btn-outline-success" @click="bulkAction('delivered')">
+                <i class="bi bi-check-circle me-1"></i>Mark Delivered
+              </button>
+            </div>
+          </div>
+        </div>
 
         @include('orders.partials.table', ['orders' => $orders])
         @include('orders.partials.pagination', ['orders' => $orders])
       </div>
     </div>
-
   </div>
 
-  {{-- Modals --}}
-  @include('orders.partials.modal-order' /* , ['barangs' => $barangs] */)
+  @include('orders.partials.modal-order', ['barangs' => $barangs, 'kode_order' => $kode_order])
   @include('orders.partials.modal-bulk-update')
 @endsection
